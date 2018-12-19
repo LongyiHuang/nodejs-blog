@@ -6,8 +6,8 @@ import bodyParser from 'body-parser';
 // import cookieParser from 'cookie-parser';
 // import session from 'express-session';
 // import {redisClient} from './redis';
-import fs from 'fs';
-import BaizeCode from './utils/encrypt/baize_coder';
+// import fs from 'fs';
+// import BaizeCode from './utils/encrypt/baize_coder';
 
 
 
