@@ -69,13 +69,15 @@ const getAesDecryptString = (data, key, iv) => {
 
 //RSA加密
 const getRsaEncryptString = (data, publicKey) => {
-    var pubKey = new NodeRSA(publicKey,'pkcs8-public'); //导入公钥
+    var pubKey = new NodeRSA(publicKey);
+    pubKey.setOptions({encryptionScheme: 'pkcs1'});
     return pubKey.encrypt(data, 'base64');
 };
 
-//RSA加密
+//RSA解密
 const getRsaDecryptString = (data,privateKey) => {
-    var priKey = new NodeRSA(privateKey,'pkcs1-private');
+    var priKey = new NodeRSA(privateKey);
+    priKey.setOptions({encryptionScheme: 'pkcs1'});
     return priKey.decrypt(data, 'utf8');
 }
 

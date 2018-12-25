@@ -2,13 +2,13 @@ import express from 'express';
 import ResponseContent from '../utils/ResponseContent';
 import svgCaptcha from 'svg-captcha';
 import BaizeCode from '../utils/encrypt/baize_coder';
-import { redisClient } from '../redis';
+import { getRedis } from '../redis';
 import UUID from '../utils/UUID';
 
 var router = express.Router();
 
 
-
+var redisClient = getRedis(0);
 
 
 router.get('/publickey',function (req,res,next) {

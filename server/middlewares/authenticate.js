@@ -1,8 +1,8 @@
-import jwt from 'jsonwebtoken';
-import User from '../models/user';
 import ResponseContent from "../utils/ResponseContent";
-import {redisClient} from '../redis';
+import {getRedis} from '../redis';
 
+
+var redisClient = getRedis(0);
 
 export function authenticateVerify (req,res,next) {
     const token =req.headers['verifytoken'];

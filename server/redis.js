@@ -1,10 +1,10 @@
 var redis = require('redis');
+const environment = process.env.NODE_ENV || 'development';
+var config = require('./config').redis[environment];
 
-var redisServerIP = '127.0.0.1';
-var redisServerPort = '6379';
 
-function setup_redis() {
-    var client = redis.createClient(redisServerPort, redisServerIP);
+export function getRedis(channel) {
+    var client = redis.createClient(config.port,config.ip);
     client.on('error', function (error) {
         console.log("RedisServer is error!\n" + error);
     });
@@ -14,9 +14,12 @@ function setup_redis() {
     client.on("end", function () {
         console.log("RedisServer is end!");
     });
+    client.select(channel, function() {
+        console.log("RedisServer channel:"+channel);
+    });
     return client;
 }
 
-module.exports.redisClient = setup_redis();
+
 
 

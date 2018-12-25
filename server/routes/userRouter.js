@@ -8,11 +8,12 @@ import path from 'path';
 import User from '../models/user';
 import {AES_KEY, IV} from "../constants";
 import {authenticateVerify} from '../middlewares/authenticate';
-import {redisClient} from "../redis";
+import {getRedis} from "../redis";
 var rsaPath = path.resolve(__dirname,'../utils/encrypt/rsa/512');
 
 
 var router = express.Router();
+var redisClient = getRedis(0);
 
 router.post('/logout',function (req, res, next) {
     var responseConten;
@@ -122,10 +123,8 @@ router.post('/signup', function (req, res, next) {
                         } else {
                             const time = getDateTimeString();
                             //加密
-                            console.log('password:' + password);
                             const encryptPassword = BaizeCode.getAesEncryptString(password, AES_KEY, IV).toString();
 
-                            console.log('encryptPassword:' + encryptPassword);
                             const user = {
                                 account: username,
                                 password_digest: encryptPassword,
