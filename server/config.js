@@ -7,6 +7,7 @@ module.exports = {
         production:{
             ip:'192.168.0.124',
             port:'6380',
+            auth:'0'
         }
     },
 

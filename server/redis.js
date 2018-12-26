@@ -3,8 +3,15 @@ const environment = process.env.NODE_ENV || 'development';
 var config = require('./config').redis[environment];
 
 
+
+
 export function getRedis(channel) {
-    var client = redis.createClient(config.port,config.ip);
+    const option = {
+        host:config.ip,
+        port:config.port,
+        password:config.auth,
+    };
+    var client = redis.createClient(option);
     client.on('error', function (error) {
         console.log("RedisServer is error!\n" + error);
     });
