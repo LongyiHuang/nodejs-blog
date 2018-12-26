@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec babel-node -- app.js",
-    "build": "babel-node app.js"
+    "start": "export NODE_ENV=development && nodemon --exec babel-node -- app.js",
+    "build": "export NODE_ENV=production && babel-node app.js"
   },
   "keywords": [],
   "author": "",
