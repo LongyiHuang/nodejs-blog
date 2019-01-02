@@ -1,7 +1,7 @@
 export default
 
 {
- "entry": "src/index.js",
+ "entry": "./src/index.js",
  "disableCSSModules": false,
 
   "es5ImcompatibleVersions":true,
